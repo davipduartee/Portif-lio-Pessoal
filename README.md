@@ -17,3 +17,5 @@ Telas do portfólio, na ordem de navegação do usuário:
 6. `05- Tela DevLinks.png` — Página de detalhe do projeto DevLinks
 7. `06-Tela GameTracker.png` — Página de detalhe do projeto GameTracker
 8. `07- Tela Finance Api.png` — Página de detalhe do projeto Finance API
+
+Link no Figma: https://www.figma.com/make/ryhzQsRw6XYg4Q65RBQqRM/Personal-Portfolio-Website?p=f&t=UZQEjvaNdqFbkJOb-0&fullscreen=1
