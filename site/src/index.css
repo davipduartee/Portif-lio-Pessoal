@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  /* Núcleo da identidade: preto profundo + âmbar. */
+  --color-ink: #0a0a0a;
+  --color-ink-soft: #101010;
+  --color-line: #1e1e1e;
+
+  --color-amber: #e9bc4e;
+  --color-amber-dim: #8a6d2a;
+
+  /* Cinzas do corpo de texto — todos acima de 4.5:1 sobre --color-ink. */
+  --color-fg: #f4f4f2;
+  --color-fg-muted: #a8a8a4;
+  --color-fg-faint: #7a7a76;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-ink);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Foco sempre visível: o design é escuro, o anel precisa ser âmbar. */
+  :focus-visible {
+    outline: 2px solid var(--color-amber);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@utility grid-bg {
+  /* Malha técnica do fundo, redesenhada em CSS em vez de imagem. */
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--color-amber) 5%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--color-amber) 5%, transparent) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+@utility label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.1rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-amber);
+}
