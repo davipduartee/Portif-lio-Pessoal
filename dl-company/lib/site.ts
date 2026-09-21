@@ -7,9 +7,9 @@
  */
 export const site = {
   name: "DL Company",
-  tagline: "Tecnologia para concessionarias",
+  tagline: "Tecnologia para concessionárias",
   description:
-    "A DL Company une identidade digital, trafego pago, atendimento com IA e CRM proprio para escalar as vendas de concessionarias e revendas de veiculos em Sao Luis (MA).",
+    "A DL Company une identidade digital, tráfego pago, atendimento com IA e CRM próprio para escalar as vendas de concessionárias e revendas de veículos em São Luís (MA).",
 
   /** TODO(cliente): dominio definitivo. Usado em canonical, OG e sitemap. */
   url: "https://www.dlcompany.com.br",
