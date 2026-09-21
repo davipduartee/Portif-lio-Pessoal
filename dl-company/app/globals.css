@@ -1,0 +1,144 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   DL Company — tokens de design
+   Paleta: base grafite-azulada + azul metalico (marca) + laranja
+   automotivo (CTA). O laranja e usado com escassez deliberada: so em
+   botao primario e numeros de destaque, para que todo CTA vire o
+   ponto focal natural da tela.
+   ------------------------------------------------------------------ */
+@theme {
+  --color-night: #070b12;
+  --color-surface: #0f1622;
+  --color-surface-2: #151f2e;
+  --color-line: #1c2837;
+  --color-brand: #2e7dff;
+  --color-brand-soft: #7fb2ff;
+  --color-cta: #ff6a13;
+  --color-cta-soft: #ff8a45;
+  --color-ink: #f2f5fa;
+  --color-muted: #93a2b8;
+  --color-success: #2ed573;
+
+  --radius-card: 1rem;
+}
+
+@theme inline {
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-sora);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* compensa o header fixo ao navegar por ancoras */
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-night);
+    color: var(--color-ink);
+    font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display), var(--font-sans), ui-sans-serif, sans-serif;
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background-color: var(--color-brand);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-soft);
+    outline-offset: 3px;
+    border-radius: 0.375rem;
+  }
+
+  /* numeros de metrica sempre alinhados */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Animacoes
+   ------------------------------------------------------------------ */
+@keyframes dl-rise {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes dl-pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(0.85); }
+}
+
+@layer utilities {
+  /* entrada imediata no carregamento (usada no hero, sem esperar scroll) */
+  .rise {
+    animation: dl-rise 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .pulse-dot {
+    animation: dl-pulse-dot 2s ease-in-out infinite;
+  }
+
+  /* grid tecnologico de fundo, 100% CSS: zero requisicao extra */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, color-mix(in oklab, var(--color-brand) 12%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklab, var(--color-brand) 12%, transparent) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 75%);
+  }
+}
+
+/* ------------------------------------------------------------------
+   Reveal no scroll.
+   A regra so vale quando ha JS disponivel: sem script, o conteudo
+   aparece normalmente em vez de ficar invisivel para sempre.
+   ------------------------------------------------------------------ */
+@media (scripting: enabled) {
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(1.25rem);
+    transition:
+      opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  [data-reveal][data-visible="true"] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
