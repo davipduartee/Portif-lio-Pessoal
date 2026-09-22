@@ -1,0 +1,146 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   LF Motors — tokens de design
+
+   Monocromatico de proposito. O cliente pediu grafite, preto e branco:
+   levamos ao pe da letra e nao usamos nenhuma cor de acento. A hierarquia
+   vem de escala, peso e respiro. E o que separa showroom de marketplace.
+   ------------------------------------------------------------------ */
+@theme {
+  --color-ink: #0a0a0b;
+  --color-ink-2: #141416;
+  --color-ink-3: #1d1d20;
+  --color-line: #2a2a2e;
+  --color-bone: #f4f2ee;
+  --color-bone-dim: #a8a6a1;
+  --color-steel: #8c9198;
+  --color-danger: #e06b6b;
+}
+
+@theme inline {
+  --font-display: var(--font-instrument-serif);
+  --font-sans: var(--font-archivo);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-ink);
+    color: var(--color-bone);
+    font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-display), Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background-color: var(--color-bone);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-bone);
+    outline-offset: 3px;
+  }
+}
+
+@layer utilities {
+  /* rotulo versalete: o detalhe que faz a pagina parecer editorial */
+  .rotulo {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-steel);
+  }
+
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* grao finissimo: tira o aspecto de bloco chapado das areas escuras */
+  .grao::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.32;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  }
+}
+
+/* ------------------------------------------------------------------
+   Movimento: lento e discreto. Nada pula, nada pisca.
+   ------------------------------------------------------------------ */
+@keyframes lf-surgir {
+  from { opacity: 0; transform: translateY(0.75rem); }
+  to { opacity: 1; transform: none; }
+}
+
+@layer utilities {
+  .surgir {
+    animation: lf-surgir 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+}
+
+/*
+  Reveal no scroll. A regra so vale quando ha JS: sem script, o conteudo
+  aparece normalmente em vez de ficar invisivel para sempre.
+*/
+@media (scripting: enabled) {
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(1.5rem);
+    transition:
+      opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  [data-reveal][data-visible="true"] {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* imagens entram crescendo de leve, como foco de camera */
+  [data-reveal-midia] > * {
+    transform: scale(1.04);
+    opacity: 0;
+    transition:
+      opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  [data-reveal-midia][data-visible="true"] > * {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  [data-reveal],
+  [data-reveal-midia] > * {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
