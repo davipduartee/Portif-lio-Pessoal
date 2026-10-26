@@ -1,0 +1,56 @@
+{
+  "README.md": {
+    "mtime": 1792116649.5907252,
+    "seen": 1792117023.2060735,
+    "ast_hash": "f4570952b1b7429d2e4b8dfd2b8c8edd",
+    "semantic_hash": "f4570952b1b7429d2e4b8dfd2b8c8edd"
+  },
+  "01-tela-inicial-home.png": {
+    "mtime": 1792116649.4947252,
+    "seen": 1792117023.2060828,
+    "ast_hash": "1a0eb2b48b3d4f7ae69a712d271b5055",
+    "semantic_hash": "1a0eb2b48b3d4f7ae69a712d271b5055"
+  },
+  "02-Habilidades.png": {
+    "mtime": 1792116649.4947252,
+    "seen": 1792117023.206087,
+    "ast_hash": "6d72d74c9707d909ae4ded7183ea3cc7",
+    "semantic_hash": "6d72d74c9707d909ae4ded7183ea3cc7"
+  },
+  "03-Projetos.png": {
+    "mtime": 1792116649.522725,
+    "seen": 1792117023.2060897,
+    "ast_hash": "178676b98e9dc2faa19651b808469265",
+    "semantic_hash": "178676b98e9dc2faa19651b808469265"
+  },
+  "03-Projetos2.png": {
+    "mtime": 1792116649.542725,
+    "seen": 1792117023.206092,
+    "ast_hash": "235938c21bbb5b07afbf0b71aba3b49e",
+    "semantic_hash": "235938c21bbb5b07afbf0b71aba3b49e"
+  },
+  "04-Tela TaskFlow.png": {
+    "mtime": 1792116649.5547252,
+    "seen": 1792117023.2060935,
+    "ast_hash": "14905d5bdd0785886a4c03ccfb895325",
+    "semantic_hash": "14905d5bdd0785886a4c03ccfb895325"
+  },
+  "05- Tela DevLinks.png": {
+    "mtime": 1792116649.566725,
+    "seen": 1792117023.2060957,
+    "ast_hash": "64eb463642c9d6e5441bef15ab0c658a",
+    "semantic_hash": "64eb463642c9d6e5441bef15ab0c658a"
+  },
+  "06-Tela GameTracker.png": {
+    "mtime": 1792116649.578725,
+    "seen": 1792117023.2060974,
+    "ast_hash": "9eb367da4cde370fa226ebf03753ef64",
+    "semantic_hash": "9eb367da4cde370fa226ebf03753ef64"
+  },
+  "07- Tela Finance Api.png": {
+    "mtime": 1792116649.5907252,
+    "seen": 1792117023.2060993,
+    "ast_hash": "cd332e744dfc0081921604fe350c2129",
+    "semantic_hash": "cd332e744dfc0081921604fe350c2129"
+  }
+}
